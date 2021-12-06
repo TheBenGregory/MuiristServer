@@ -2,7 +2,8 @@ from django.db import models
 
 
 
-class List(models.Model):
+class FavoritePark(models.Model):
 
+    parks = models.ForeignKey("Park", on_delete=models.CASCADE)
     muirist = models.ForeignKey("Muirist", on_delete=models.CASCADE)
-    park = models.ForeignKey("Park", on_delete=models.CASCADE)
+    
