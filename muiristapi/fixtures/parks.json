@@ -1,0 +1,10 @@
+[
+    {
+        "model": "muiristapi.park",
+        "pk": 1,
+        "fields": {
+            "name": "Joshua Tree",
+            "location": "California"
+        }
+    }
+]

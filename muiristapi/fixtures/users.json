@@ -5,12 +5,11 @@
         "fields": {
             "password": "pbkdf2_sha256$216000$qMRH8szID7Z8$Vljya2V3XfruOHuvx1hGz9ZyKg4bxbw7rc2WO0gTR7I=",
             "last_login": null,
-            "is_moderater": false,
             "username": "DaveDave",
             "first_name": "Dave",
             "last_name": "Davidson",
             "email": "me@me.com",
-            "date_joined": "2020-08-28T14:51:39.989Z"   
+            "date_joined": "2020-08-28T14:51:39.989Z"
         }   
  }
 ]

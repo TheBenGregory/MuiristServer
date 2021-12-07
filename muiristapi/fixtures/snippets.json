@@ -1,0 +1,14 @@
+[
+    {
+        "model": "muiristapi.snippet",
+        "pk": 1,
+        "fields": {
+            "title": "Joshua Tree",
+            "content": "California",
+            "muirist": 1,
+            "park": 1
+       
+
+        }
+    }
+]

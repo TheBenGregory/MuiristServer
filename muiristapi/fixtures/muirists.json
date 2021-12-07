@@ -1,0 +1,9 @@
+[
+    {
+        "model": "muiristapi.muirist",
+        "pk": 1,
+        "fields": {
+            "user": "1"
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "model": "muiristapi.lists",
+        "pk": 1,
+        "fields": {
+            "muiristId": 1,
+            "parkId": 1
+
+        }
+    }
+]
