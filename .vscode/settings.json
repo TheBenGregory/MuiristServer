@@ -5,5 +5,13 @@
         "--load-plugins=pylint_django",
         "--django-settings-module=muirist.settings",
     ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Muirist Table",
+            "database": "db.sqlite3"
+        }
+    ],
     
 }
