@@ -3,8 +3,8 @@
         "model": "muiristapi.snippet",
         "pk": 1,
         "fields": {
-            "title": "Joshua Tree",
-            "content": "California",
+            "title": "A cool thing I found in Joshua Tree",
+            "content": "A half mile North of the Ryan Mountain Trail is an entrance to an old gold mine. ",
             "muirist": 1,
             "park": 1
        
