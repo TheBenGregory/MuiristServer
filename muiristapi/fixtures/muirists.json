@@ -3,7 +3,8 @@
         "model": "muiristapi.muirist",
         "pk": 1,
         "fields": {
-            "user": "1"
+            "user": "1",
+            "name": "Dave Davidson"
         }
     }
 ]
