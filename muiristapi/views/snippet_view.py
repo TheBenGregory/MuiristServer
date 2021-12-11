@@ -16,7 +16,7 @@ class SnippetView(ViewSet):
         
         
         muirist = Muirist.objects.get(user=request.auth.user)
-        park = Park.objects.get(pk=request.data['parkId'])
+        park = Park.objects.get(pk=request.data["parkId"])
         
 
         try:
@@ -92,7 +92,7 @@ class ParkSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Park
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 class SnippetSerializer(serializers.ModelSerializer):
     muirist = MuiristSerializer()

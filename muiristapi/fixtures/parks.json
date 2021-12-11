@@ -6,5 +6,37 @@
             "name": "Joshua Tree",
             "location": "California"
         }
+    },
+    {
+        "model": "muiristapi.park",
+        "pk": 2,
+        "fields": {
+            "name": "Glacier National Park",
+            "location": "Montana"
+        }
+    },
+    {
+        "model": "muiristapi.park",
+        "pk": 3,
+        "fields": {
+            "name": "Dry Tortuga National Park",
+            "location": "Florida"
+        }
+    },
+    {
+        "model": "muiristapi.park",
+        "pk": 4,
+        "fields": {
+            "name": "Acadia National Park",
+            "location": "Maine"
+        }
+    },
+    {
+        "model": "muiristapi.park",
+        "pk": 5,
+        "fields": {
+            "name": "Big Bend National Park",
+            "location": "Texas"
+        }
     }
 ]

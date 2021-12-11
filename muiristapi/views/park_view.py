@@ -6,7 +6,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from muiristapi.models import Park
+from muiristapi.models import Park, Snippet
 
 
 class ParkView(ViewSet):
@@ -30,7 +30,12 @@ class ParkView(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
-
+    def list(self, request):
+        
+        parks = Park.objects.all()
+        serializer = ParkSerializer(
+            parks, many=True, context={'request': request})
+        return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
      
@@ -65,11 +70,17 @@ class ParkView(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
   
-
+# class SnippetSerializer(serializers.ModelSerializer):
+    
+#     class Meta:
+        
+#         model = Snippet
+#         fields = ('title', 'content')
 
 class ParkSerializer(serializers.ModelSerializer):
     
     class Meta:
+        # snippet = SnippetSerializer
         
         model = Park
         fields = ('id', 'name', 'location')

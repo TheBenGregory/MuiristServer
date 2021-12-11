@@ -1,0 +1,10 @@
+[
+    {
+        "model": "muiristapi.park_data",
+        "pk": 1,
+        "fields": {
+            "parkName": "",
+            "location": ""
+        }
+    }
+]
