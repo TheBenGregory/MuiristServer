@@ -6,8 +6,10 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from muiristapi.models import Snippet, Park, Muirist
+from muiristapi.models import Snippet, Park, Muirist, List
 from django.contrib.auth.models import User
+from rest_framework.decorators import action
+from rest_framework import status
 
 
 class SnippetView(ViewSet):
@@ -73,6 +75,36 @@ class SnippetView(ViewSet):
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    @action(methods=['post', 'delete'], detail=True)
+    def addToBackpack(self, request, pk=None):
+        muirist = Muirist.objects.get(user= request.auth.user)
+        snippet = Snippet.objects.get(pk=pk)
+        park=Park.objects.get(pk=snippet.park.id)
+        
+        try: 
+            user_list = List.objects.get(muirist=muirist, park=park)
+        except List.DoesNotExist:
+            user_list=List.objects.create(
+                muirist=muirist,
+                park=park
+                )
+        
+            
+
+        if request.method == "POST":
+            try:
+                user_list.Snippets.add(snippet)
+                return Response({}, status=status.HTTP_201_CREATED)
+            except Exception as ex:
+                return Response({'message': ex.args[0]})
+
+        elif request.method == "DELETE":
+            try:
+                user_list.Snippets.remove(snippet)
+                return Response(None, status=status.HTTP_204_NO_CONTENT)
+            except Exception as ex:
+                return Response({'message': ex.args[0]})
 
 class UserSerializer(serializers.ModelSerializer):
     

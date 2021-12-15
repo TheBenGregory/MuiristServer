@@ -8,3 +8,4 @@ class Snippet(models.Model):
     content = models.CharField(max_length=120)
     muirist = models.ForeignKey("Muirist", on_delete=models.CASCADE)
     park = models.ForeignKey("Park", on_delete=models.CASCADE)
+    lists = models.ManyToManyField("List", through="SnippetList", related_name="Snippets")
