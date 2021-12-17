@@ -16,13 +16,14 @@ class ListView(ViewSet):
        
         try:
             snippet_list = List.objects.get(pk=pk)
-            serializer = SnippetListSerializer(List, context={'request': request})
+            serializer = ListSerializer(List, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
-       
+        
+        
         snippet_list = List.objects.all()
 
         
@@ -30,6 +31,20 @@ class ListView(ViewSet):
             snippet_list, many=True, context={'request': request})
         return Response(serializer.data)
   
+    @action(methods=['GET'], detail=False)
+    def myLists(self, request):
+        user = Muirist.objects.get(user=request.auth.user)
+    
+        try:
+            list = List.objects.filter(muirist = user)
+            list_serializer = ListSerializer(list, many=True, context={'request': request})
+            return Response(list_serializer.data)
+        except List.DoesNotExist:
+            return Response(
+                {'message': 'List does not exist.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )    
+            
 class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
