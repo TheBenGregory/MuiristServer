@@ -6,22 +6,21 @@ python3 manage.py seed_db
 
 from django.core.management.base import BaseCommand
 import requests
-from muiristapi.models import ParkData
+from muiristapi.models import Park
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        ParkData.objects.all().delete()
+        Park.objects.all().delete()
         response = requests.get(
-            "https://developer.nps.gov/api/v1/parks?parkCode=yose&api_key=GYhnLrZm43nOpAoc5nvpxZa1EyctQywOk6QEnlJ6")
+            "https://developer.nps.gov/api/v1/parks?api_key=GYhnLrZm43nOpAoc5nvpxZa1EyctQywOk6QEnlJ6")
         json = response.json()
-        for item in json:
-            park_name = json[item]['fullName']
-            location = json[item]['location']
+        for data in json:
+            name = json[data]['fullName']
+            location = json[data]['location']
             
-                new_park_data = ParkData.objects.create(
-                    
-                    parkName=park_name['parkName'],
-                    location=location['location'],
-                    url= url['url']
-                    )
+            new_park_data = Park.objects.create(
+                
+                parkName=name['parkName'],
+                location=location['location']
+                )
