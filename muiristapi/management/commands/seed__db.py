@@ -15,12 +15,12 @@ class Command(BaseCommand):
         response = requests.get(
             "https://developer.nps.gov/api/v1/parks?api_key=GYhnLrZm43nOpAoc5nvpxZa1EyctQywOk6QEnlJ6")
         json = response.json()
-        for data in json:
-            name = json[data]['fullName']
-            location = json[data]['location']
+        for data in json["data"]:
+            name = data['name']
+            location = data['states']
             
             new_park_data = Park.objects.create(
                 
-                parkName=name['parkName'],
-                location=location['location']
+                name=name,
+                location=location
                 )
