@@ -48,9 +48,17 @@ class SnippetView(ViewSet):
     def list(self, request):
         
         snippets = Snippet.objects.all()
+        for snippet in snippets:
+            user_snippets =  snippet.snippet_lists.filter(lists__muirist__user=request.auth.user)
+            if len(user_snippets) > 0:
+                snippet.added = True
+            else: 
+                snippet.added = False
         serializer = SnippetSerializer(
             snippets, many=True, context={'request': request})
         return Response(serializer.data)
+    
+    
 
     def update(self, request, pk=None):
         park = Park.objects.get(pk=request.data['parkId'])
@@ -129,9 +137,10 @@ class ParkSerializer(serializers.ModelSerializer):
 class SnippetSerializer(serializers.ModelSerializer):
     muirist = MuiristSerializer()
     park = ParkSerializer()
+    added = serializers.BooleanField(required = False)
     
     class Meta:
         
         model = Snippet
-        fields = ('id', 'title', 'content', 'muirist', 'park')
+        fields = ('id', 'title', 'content', 'muirist', 'park', 'added')
         depth = 1
