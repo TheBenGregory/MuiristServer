@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             name='Snippet',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=30)),
+                ('title', models.CharField(max_length=230)),
                 ('content', models.CharField(max_length=120)),
                 ('muirist', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='muiristapi.muirist')),
                 ('park', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='muiristapi.park')),
