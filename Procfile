@@ -1,0 +1,1 @@
+web: gunicorn muirist.wsgi --log-file -
